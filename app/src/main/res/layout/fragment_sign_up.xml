@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".presentation.view.SignUp"
+    android:paddingTop="70dp"
+    android:background="@color/white">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign Up"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:fontFamily="@font/segoeui"
+        android:layout_marginBottom="60dp"
+        android:layout_marginStart="20dp"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColorHint="#818181"
+        android:layout_marginBottom="25dp">
+        <EditText
+            android:layout_width="330dp"
+            android:layout_height="50dp"
+            android:inputType="text"
+            android:background="@color/white"
+            android:fontFamily="@font/segoeui"
+            android:hint="Name"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColorHint="#818181"
+        android:layout_marginBottom="25dp">
+        <EditText
+            android:layout_width="330dp"
+            android:layout_height="50dp"
+            android:inputType="phone"
+            android:background="@color/white"
+            android:fontFamily="@font/segoeui"
+            android:hint="Phone Number"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColorHint="#818181"
+        android:layout_marginBottom="25dp">
+        <EditText
+            android:layout_width="330dp"
+            android:layout_height="50dp"
+            android:inputType="textEmailAddress"
+            android:background="@color/white"
+            android:fontFamily="@font/segoeui"
+            android:hint="Email"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        app:passwordToggleEnabled="true"
+        android:textColorHint="#818181"
+        >
+        <EditText
+            android:layout_width="330dp"
+            android:layout_height="50dp"
+            android:inputType="textPassword"
+            android:background="@color/white"
+            android:fontFamily="@font/segoeui"
+            android:hint="Password"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <Button
+        android:id="@+id/signUpBtn"
+        android:layout_width="313dp"
+        android:layout_height="53dp"
+        android:background="@drawable/custom_button"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:text="Sign Up"
+        android:textSize="16sp"
+        android:fontFamily="@font/segoeui"
+        android:textAllCaps="false"
+        android:textColor="@color/white" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Don't have an account ?"
+            android:textColor="#818181"
+            android:textSize="14sp"
+            android:fontFamily="@font/segoeui"
+            android:layout_marginEnd="8dp"/>
+        <TextView
+            android:id="@+id/signInBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign in"
+            android:textSize="14sp"
+            android:textColor="#272727"
+
+            android:fontFamily="@font/segoeui"/>
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

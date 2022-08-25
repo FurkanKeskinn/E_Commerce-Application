@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_navigation"
+    app:startDestination="@id/homePage">
+
+    <fragment
+        android:id="@+id/homePage"
+        android:name="com.example.e_commerceapplication.presentation.view.HomePage"
+        android:label="fragment_home_page"
+        tools:layout="@layout/fragment_home_page" >
+        <action
+            android:id="@+id/action_homePage_to_filterPage"
+            app:destination="@id/filterPage" />
+        <action
+            android:id="@+id/action_homePage_to_menuPage"
+            app:destination="@id/menuPage" />
+        <action
+            android:id="@+id/action_homePage_to_itemDetails"
+            app:destination="@id/itemDetails" />
+        <action
+            android:id="@+id/action_homePage_to_checkoutPage"
+            app:destination="@id/checkoutPage" />
+    </fragment>
+    <fragment
+        android:id="@+id/cartPage"
+        android:name="com.example.e_commerceapplication.presentation.view.CartPage"
+        android:label="fragment_cart_page"
+        tools:layout="@layout/fragment_cart_page" >
+        <action
+            android:id="@+id/action_cartPage_to_homePage"
+            app:destination="@id/homePage" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUp"
+        android:name="com.example.e_commerceapplication.presentation.view.SignUp"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/fragment_sign_up" >
+        <action
+            android:id="@+id/action_signUp_to_loginPage"
+            app:destination="@id/loginPage" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginPage"
+        android:name="com.example.e_commerceapplication.presentation.view.LoginPage"
+        android:label="fragment_login_page"
+        tools:layout="@layout/fragment_login_page" >
+        <action
+            android:id="@+id/action_loginPage_to_signUp"
+            app:destination="@id/signUp" />
+        <action
+            android:id="@+id/action_loginPage_to_homePage"
+            app:destination="@id/homePage" />
+    </fragment>
+    <fragment
+        android:id="@+id/filterPage"
+        android:name="com.example.e_commerceapplication.presentation.view.FilterPage"
+        android:label="fragment_filter_page"
+        tools:layout="@layout/fragment_filter_page" >
+        <action
+            android:id="@+id/action_filterPage_to_homePage"
+            app:destination="@id/homePage" />
+        <action
+            android:id="@+id/action_filterPage_to_sharedClothes"
+            app:destination="@id/sharedClothes" />
+    </fragment>
+    <fragment
+        android:id="@+id/checkoutPage"
+        android:name="com.example.e_commerceapplication.presentation.view.CheckoutPage"
+        android:label="fragment_checkout_page"
+        tools:layout="@layout/fragment_checkout_page" >
+        <action
+            android:id="@+id/action_checkoutPage_to_confirmationPage"
+            app:destination="@id/confirmationPage" />
+        <action
+            android:id="@+id/action_checkoutPage_to_homePage"
+            app:destination="@id/homePage" />
+    </fragment>
+    <fragment
+        android:id="@+id/confirmationPage"
+        android:name="com.example.e_commerceapplication.presentation.view.ConfirmationPage"
+        android:label="fragment_confirmation_page"
+        tools:layout="@layout/fragment_confirmation_page" >
+        <action
+            android:id="@+id/action_confirmationPage_to_homePage"
+            app:destination="@id/homePage" />
+    </fragment>
+    <fragment
+        android:id="@+id/menuPage"
+        android:name="com.example.e_commerceapplication.presentation.view.MenuPage"
+        android:label="fragment_menu_page"
+        tools:layout="@layout/fragment_menu_page" >
+        <action
+            android:id="@+id/action_menuPage_to_homePage"
+            app:destination="@id/homePage" />
+        <action
+            android:id="@+id/action_menuPage_to_profilePage"
+            app:destination="@id/profilePage" />
+        <action
+            android:id="@+id/action_menuPage_to_myOrdersPage"
+            app:destination="@id/myOrdersPage" />
+        <action
+            android:id="@+id/action_menuPage_to_sharedClothes"
+            app:destination="@id/sharedClothes" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemDetails"
+        android:name="com.example.e_commerceapplication.presentation.view.ItemDetails"
+        android:label="fragment_item_details"
+        tools:layout="@layout/fragment_item_details" >
+        <action
+            android:id="@+id/action_itemDetails_to_cartPage"
+            app:destination="@id/cartPage" />
+        <action
+            android:id="@+id/action_itemDetails_to_homePage"
+            app:destination="@id/homePage" />
+    </fragment>
+    <fragment
+        android:id="@+id/myOrdersPage"
+        android:name="com.example.e_commerceapplication.presentation.view.MyOrdersPage"
+        android:label="fragment_my_orders_page"
+        tools:layout="@layout/fragment_my_orders_page" >
+        <action
+            android:id="@+id/action_myOrdersPage_to_menuPage"
+            app:destination="@id/menuPage" />
+    </fragment>
+    <fragment
+        android:id="@+id/profilePage"
+        android:name="com.example.e_commerceapplication.presentation.view.ProfilePage"
+        android:label="fragment_profile_page"
+        tools:layout="@layout/fragment_profile_page" >
+        <action
+            android:id="@+id/action_profilePage_to_menuPage"
+            app:destination="@id/menuPage" />
+    </fragment>
+    <fragment
+        android:id="@+id/sharedClothes"
+        android:name="com.example.e_commerceapplication.presentation.view.SharedClothes"
+        android:label="fragment_shared_clothes"
+        tools:layout="@layout/fragment_shared_clothes" >
+        <action
+            android:id="@+id/action_sharedClothes_to_menuPage"
+            app:destination="@id/menuPage" />
+        <action
+            android:id="@+id/action_sharedClothes_to_filterPage"
+            app:destination="@id/filterPage" />
+    </fragment>
+</navigation>
