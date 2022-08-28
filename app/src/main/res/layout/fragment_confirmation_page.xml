@@ -7,7 +7,7 @@
     android:background="@color/white"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".presentation.view.ConfirmationPage">
+    tools:context=".presentation.view.Confirmation.ConfirmationPage">
 
 <RelativeLayout
     android:layout_width="wrap_content"

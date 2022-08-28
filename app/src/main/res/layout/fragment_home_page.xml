@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".presentation.view.HomePage">
+    tools:context=".presentation.view.Home.HomePage">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -56,21 +56,22 @@
         android:fontFamily="@font/segoeui"
         android:textSize="30sp"/>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
 
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:layout_height="match_parent"
             tools:listitem="@layout/card_cell"
-            android:id="@+id/recyclerView"/>
+            android:id="@+id/productListRecycler"/>
+        </ScrollView>
+    </GridLayout>
 
-    </LinearLayout>
 
-    </ScrollView>
 </LinearLayout>

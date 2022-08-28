@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.e_commerceapplication" >
 
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
+        android:usesCleartextTraffic="true"
         android:name=".E_CommerceApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"

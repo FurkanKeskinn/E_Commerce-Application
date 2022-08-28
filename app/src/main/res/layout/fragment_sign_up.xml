@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context=".presentation.view.SignUp"
+    tools:context=".presentation.view.SignUp.SignUp"
     android:paddingTop="70dp"
     android:background="@color/white">
 

@@ -1,9 +1,7 @@
 package com.example.e_commerceapplication.di
 
 import com.example.e_commerceapplication.common.Constants
-import com.example.e_commerceapplication.data.CommerceApi
-import com.example.e_commerceapplication.data.repository.ProductRepositoryImpl
-import com.example.e_commerceapplication.domain.repository.ProductRepository
+import com.example.e_commerceapplication.data.service.CommerceApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,17 +16,16 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun getClientApi(): CommerceApi{
+    fun getRetrofitServiceInstance(retrofit: Retrofit): CommerceApi{
+        return retrofit.create(CommerceApi::class.java)
+    }
+    @Provides
+    @Singleton
+    fun getClientApi(): Retrofit {
         return Retrofit.Builder()
             .baseUrl(Constants.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-            .create(CommerceApi::class.java)
     }
 
-    @Provides
-    @Singleton
-    fun getClientRepository(api: CommerceApi): ProductRepository{
-        return ProductRepositoryImpl(api)
-    }
 }

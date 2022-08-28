@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homePage"
-        android:name="com.example.e_commerceapplication.presentation.view.HomePage"
+        android:name="com.example.e_commerceapplication.presentation.view.Home.HomePage"
         android:label="fragment_home_page"
         tools:layout="@layout/fragment_home_page" >
         <action
@@ -22,10 +22,13 @@
         <action
             android:id="@+id/action_homePage_to_checkoutPage"
             app:destination="@id/checkoutPage" />
+        <action
+            android:id="@+id/action_homePage_self"
+            app:destination="@id/homePage" />
     </fragment>
     <fragment
         android:id="@+id/cartPage"
-        android:name="com.example.e_commerceapplication.presentation.view.CartPage"
+        android:name="com.example.e_commerceapplication.presentation.view.Cart.CartPage"
         android:label="fragment_cart_page"
         tools:layout="@layout/fragment_cart_page" >
         <action
@@ -34,7 +37,7 @@
     </fragment>
     <fragment
         android:id="@+id/signUp"
-        android:name="com.example.e_commerceapplication.presentation.view.SignUp"
+        android:name="com.example.e_commerceapplication.presentation.view.SignUp.SignUp"
         android:label="fragment_sign_up"
         tools:layout="@layout/fragment_sign_up" >
         <action
@@ -43,7 +46,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginPage"
-        android:name="com.example.e_commerceapplication.presentation.view.LoginPage"
+        android:name="com.example.e_commerceapplication.presentation.view.Login.LoginPage"
         android:label="fragment_login_page"
         tools:layout="@layout/fragment_login_page" >
         <action
@@ -55,7 +58,7 @@
     </fragment>
     <fragment
         android:id="@+id/filterPage"
-        android:name="com.example.e_commerceapplication.presentation.view.FilterPage"
+        android:name="com.example.e_commerceapplication.presentation.view.Filter.FilterPage"
         android:label="fragment_filter_page"
         tools:layout="@layout/fragment_filter_page" >
         <action
@@ -67,7 +70,7 @@
     </fragment>
     <fragment
         android:id="@+id/checkoutPage"
-        android:name="com.example.e_commerceapplication.presentation.view.CheckoutPage"
+        android:name="com.example.e_commerceapplication.presentation.view.Checkout.CheckoutPage"
         android:label="fragment_checkout_page"
         tools:layout="@layout/fragment_checkout_page" >
         <action
@@ -79,7 +82,7 @@
     </fragment>
     <fragment
         android:id="@+id/confirmationPage"
-        android:name="com.example.e_commerceapplication.presentation.view.ConfirmationPage"
+        android:name="com.example.e_commerceapplication.presentation.view.Confirmation.ConfirmationPage"
         android:label="fragment_confirmation_page"
         tools:layout="@layout/fragment_confirmation_page" >
         <action
@@ -88,7 +91,7 @@
     </fragment>
     <fragment
         android:id="@+id/menuPage"
-        android:name="com.example.e_commerceapplication.presentation.view.MenuPage"
+        android:name="com.example.e_commerceapplication.presentation.view.Menu.MenuPage"
         android:label="fragment_menu_page"
         tools:layout="@layout/fragment_menu_page" >
         <action
@@ -106,7 +109,7 @@
     </fragment>
     <fragment
         android:id="@+id/itemDetails"
-        android:name="com.example.e_commerceapplication.presentation.view.ItemDetails"
+        android:name="com.example.e_commerceapplication.presentation.view.Detail.ItemDetails"
         android:label="fragment_item_details"
         tools:layout="@layout/fragment_item_details" >
         <action
@@ -118,7 +121,7 @@
     </fragment>
     <fragment
         android:id="@+id/myOrdersPage"
-        android:name="com.example.e_commerceapplication.presentation.view.MyOrdersPage"
+        android:name="com.example.e_commerceapplication.presentation.view.MyOrder.MyOrdersPage"
         android:label="fragment_my_orders_page"
         tools:layout="@layout/fragment_my_orders_page" >
         <action
@@ -127,7 +130,7 @@
     </fragment>
     <fragment
         android:id="@+id/profilePage"
-        android:name="com.example.e_commerceapplication.presentation.view.ProfilePage"
+        android:name="com.example.e_commerceapplication.presentation.view.Profile.ProfilePage"
         android:label="fragment_profile_page"
         tools:layout="@layout/fragment_profile_page" >
         <action
@@ -136,7 +139,7 @@
     </fragment>
     <fragment
         android:id="@+id/sharedClothes"
-        android:name="com.example.e_commerceapplication.presentation.view.SharedClothes"
+        android:name="com.example.e_commerceapplication.presentation.view.Shared.SharedClothes"
         android:label="fragment_shared_clothes"
         tools:layout="@layout/fragment_shared_clothes" >
         <action
