@@ -1,26 +1,20 @@
 package com.example.e_commerceapplication.presentation.view.Home
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.lifecycle.MutableLiveData
-import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.e_commerceapplication.R
+import androidx.room.util.appendPlaceholders
 import com.example.e_commerceapplication.data.model.Product
+import com.example.e_commerceapplication.data.model.Products
 import com.example.e_commerceapplication.databinding.CardCellBinding
-import com.example.e_commerceapplication.databinding.FragmentHomePageBinding
 import com.squareup.picasso.Picasso
-import retrofit2.Call
-import kotlin.coroutines.coroutineContext
 
 class ProductRecyclerAdapter: RecyclerView.Adapter<ProductRecyclerAdapter.ProductViewHolder>() {
 
-    //private val productList = ArrayList<Product>()
-    private var productList: List<Product>? = null
+
+    /*private var productList : List<Product> = ArrayList()
+    //private var productList: List<Product>? = null
 
             fun setList(data: List<Product>){
                 this.productList = data
@@ -45,6 +39,28 @@ class ProductRecyclerAdapter: RecyclerView.Adapter<ProductRecyclerAdapter.Produc
 
 
     }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
+        val productBinding = CardCellBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ProductViewHolder(productBinding)
+    }
+
+    override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
+        //holder.bind(productList!!.get(position))
+        holder.bind(productList[position])
+
+    }
+
+    override fun getItemCount(): Int {
+            return productList.size
+    }
+
+    /*fun updateList(list: Product) {
+        notifyDataSetChanged()
+    }*/*/
+
+    private var products : List<Product> = ArrayList()
+
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
         val productBinding = CardCellBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -52,20 +68,35 @@ class ProductRecyclerAdapter: RecyclerView.Adapter<ProductRecyclerAdapter.Produc
     }
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
-        holder.bind(productList!!.get(position))
 
+        val product = products[position]
 
+        holder.binding.apply {
+            productName.text = product.name
+            productPrice.text = product.price.toString()
+            Picasso.get().load(product.image).into(productImageView)
+        }
     }
 
     override fun getItemCount(): Int {
-        if (productList == null){
-            return 0
-        }else
-            return productList!!.size
+        return products.size
+    }
+    class ProductViewHolder(val binding: CardCellBinding): RecyclerView.ViewHolder(binding.root)
+
+    fun setProducts(products: List<Product>) {
+        this.products = products
     }
 
-    /*fun updateList(list: List<Product>) {
-        productList.clear()
-        productList.addAll(list)
+   /* fun bind(product: Product){
+        binding.productName.text = product.name
+        binding.productPrice.text = product.price.toString()
+
+        binding.productCard.setOnClickListener {
+            val action = HomePageDirections.actionHomePageToItemDetails()
+            Navigation.findNavController(it).navigate(action)
+
+        }
+
+        Picasso.get().load(product.image).into(binding.productImageView)
     }*/
 }

@@ -1,11 +1,10 @@
 package com.example.e_commerceapplication.data.service
 
 
-import com.example.e_commerceapplication.data.model.Login
-import com.example.e_commerceapplication.data.model.Product
-import com.example.e_commerceapplication.data.model.ProductDetail
-import com.example.e_commerceapplication.data.model.Register
+import com.example.e_commerceapplication.common.Resource
+import com.example.e_commerceapplication.data.model.*
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.*
 
 interface CommerceApi {
@@ -36,10 +35,10 @@ interface CommerceApi {
         @Field("price") price: Int,
         @Field("description") description: String,
         @Field("color") color: String,
-    ): Call<Product>
+    ): Call<List<Product>>
 
     @GET("urunler")
-    fun getProduct(): Call<List<Product>>
+   suspend fun getProduct(): Response<Products>
 
     @GET("urun/{url}")
     fun getByIdProduct(@Path ("id") id: Int): Call<ProductDetail>

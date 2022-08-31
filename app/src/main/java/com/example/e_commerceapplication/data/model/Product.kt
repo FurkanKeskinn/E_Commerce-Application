@@ -7,14 +7,12 @@ import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 data class Product(
-    var id: Int,
-    var name: String,
+    val id: Int,
+    val name: String,
     val gender: String,
     val category: String,
     val image: String,
     val price: Int,
     val description: String,
     val color: String
-){
-
-}
+)

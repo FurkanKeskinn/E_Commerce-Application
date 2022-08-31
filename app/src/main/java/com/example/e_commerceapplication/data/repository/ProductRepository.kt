@@ -2,6 +2,7 @@ package com.example.e_commerceapplication.data.repository
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import com.example.e_commerceapplication.common.Resource
 import com.example.e_commerceapplication.data.model.Product
 import com.example.e_commerceapplication.data.model.ProductDetail
 import com.example.e_commerceapplication.data.model.Register
@@ -11,42 +12,42 @@ import retrofit2.Callback
 import retrofit2.Response
 import javax.inject.Inject
 
-class ProductRepository @Inject constructor(
-    private val api: CommerceApi
-) {
-    var productLiveData = MutableLiveData<List<Product>>()
-    var addProductLiveData = MutableLiveData<Product>()
-    var productDetailLiveData = MutableLiveData<ProductDetail>()
-    var isLoading = MutableLiveData<Boolean>()
+class ProductRepository @Inject constructor(private val api: CommerceApi) {
 
-    fun getProduct(liveData: MutableLiveData<List<Product>>) {
+   suspend fun getProducts() = api.getProduct()
+
+    /*var productLiveData = MutableLiveData<List<Product>>()
+    var addProductLiveData = MutableLiveData<List<Product>>()
+    var productDetailLiveData = MutableLiveData<ProductDetail>()
+    var isLoading = MutableLiveData<Boolean>()*/
+
+   /* fun getProduct() {
         val call: Call<List<Product>> = api.getProduct()
         call.enqueue(object : Callback<List<Product>> {
             override fun onResponse(call: Call<List<Product>>, response: Response<List<Product>>) {
-               /* response.body()?.let {
+                response.body()?.let {
                     productLiveData.value = it
                     isLoading.value = false
                 } ?: run {
                     isLoading.value = false
-                }*/
+                }
                 if (response.isSuccessful){
-                    liveData.postValue(response.body())
-                }else
-                    liveData.postValue(null)
+                    productLiveData.postValue(response.body())
+                }
+
             }
 
             override fun onFailure(call: Call<List<Product>>, t: Throwable) {
-              //  t.localizedMessage?.toString()?.let { Log.e("Product Failure", it) }
-               // isLoading.value = false
+                t.localizedMessage?.toString()?.let { Log.e("Product Failure", it) }
+                isLoading.value = false
 
-                liveData.postValue(null)
             }
 
         })
 
-    }
+    }*/
 
-    fun addProduct(
+    /*fun addProduct(
         name: String,
         gender: String,
         category: String,
@@ -55,7 +56,7 @@ class ProductRepository @Inject constructor(
         description: String,
         color: String
     ) {
-        val call: Call<Product> = api.addProduct(
+        val call: Call<List<Product>> = api.addProduct(
             name = name,
             gender = gender,
             category = category,
@@ -64,8 +65,8 @@ class ProductRepository @Inject constructor(
             description = description,
             color = color
         )
-        call.enqueue(object : Callback<Product> {
-            override fun onResponse(call: Call<Product>, response: Response<Product>) {
+        call.enqueue(object : Callback<List<Product>> {
+            override fun onResponse(call: Call<List<Product>>, response: Response<List<Product>>) {
 
                 if (response.isSuccessful) {
                     addProductLiveData.postValue(response.body())
@@ -78,15 +79,15 @@ class ProductRepository @Inject constructor(
                 }
             }
 
-            override fun onFailure(call: Call<Product>, t: Throwable) {
+            override fun onFailure(call: Call<List<Product>>, t: Throwable) {
                 t.localizedMessage?.toString()?.let { Log.e("Product Failure", it) }
                 isLoading.value = false
             }
 
         })
-    }
+    }*/
 
-    fun getByIdProduct(id: Int) {
+   /* fun getByIdProduct(id: Int) {
         val call: Call<ProductDetail> = api.getByIdProduct(id = id)
         call.enqueue(object : Callback<ProductDetail> {
 
@@ -109,6 +110,6 @@ class ProductRepository @Inject constructor(
 
 
         })
-    }
+    }*/
 
 }

@@ -1,4 +1,4 @@
 package com.example.e_commerceapplication.presentation.view.MyOrder
 
-class ProductRecyclerAdapter {
+class OrderRecyclerAdapter {
 }
