@@ -2,10 +2,7 @@ package com.example.e_commerceapplication.data.repository
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import com.example.e_commerceapplication.common.Resource
 import com.example.e_commerceapplication.data.model.Login
-import com.example.e_commerceapplication.data.model.Product
-import com.example.e_commerceapplication.data.model.ProductDetail
 import com.example.e_commerceapplication.data.model.Register
 import com.example.e_commerceapplication.data.service.CommerceApi
 import retrofit2.Call

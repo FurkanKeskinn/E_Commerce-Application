@@ -12,22 +12,16 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.e_commerceapplication.R
 import com.example.e_commerceapplication.data.model.Product
+import com.example.e_commerceapplication.data.model.ResultItem
 import com.example.e_commerceapplication.databinding.FragmentHomePageBinding
 import dagger.hilt.android.AndroidEntryPoint
-
 
 class HomePage : Fragment() {
 
     private var _binding: FragmentHomePageBinding? = null
     private val binding get() = _binding!!
-   /* private val viewModel by lazy {
-        ViewModelProvider(this,defaultViewModelProviderFactory).get(HomeViewModel::class.java)
-    }*/
     private lateinit var productAdapter: ProductRecyclerAdapter
-    private val allProductAdapter by lazy { ProductRecyclerAdapter() }
-
-
-    private val viewModel: HomeViewModel by viewModels()
+   private val viewModel: HomeViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,96 +48,30 @@ class HomePage : Fragment() {
                    layoutManager = GridLayoutManager(context, 2, LinearLayoutManager.VERTICAL, false)
                }*/
 
+        /*val layoutManager = LinearLayoutManager(context)
+        binding.productListRecycler.layoutManager = layoutManager
+        binding.productListRecycler.adapter = productAdapter*/
+
+        initObservers()
+    }
+    fun initObservers(){
         productAdapter = ProductRecyclerAdapter()
         val layoutManager = LinearLayoutManager(context)
         binding.productListRecycler.layoutManager = layoutManager
-        binding.productListRecycler.adapter = allProductAdapter
+        binding.productListRecycler.adapter = productAdapter
 
-        //initObservers()
-
-        setUpRecyclerView()
-        getProducts()
-        observeProducts()
-    }
-
-   /* private fun initObservers(){
-       /* with(binding){
-            with(viewModel){
-
-                productList.observe(viewLifecycleOwner){ list ->
-                    productListRecycler.apply {
-                        setHasFixedSize(true)
-                        adapter = allProductAdapter.also { adapter ->
-                            adapter.updateList(listOf(list))
-                        }
-                    }
-                }
-               /* isLoading.observe(viewLifecycleOwner){
-                    if (it){
-
-                    }*/
-                 }
-            }*/
-
-
-       viewModel.getLiveDataObserver().observe(viewLifecycleOwner, object: Observer<List<Product>>{
-            override fun onChanged(t: List<Product>?) {
-                if (t != null) {
-                    productAdapter.setList(t)
-                }
-                   // productAdapter.notifyDataSetChanged()
-
-            }
-
-        })
-        viewModel.loadData()
-
-        productAdapter = ProductRecyclerAdapter()
-        //setUpRecyclerView()
-       // observeShows()
-
-        }*/
-    /*private fun setUpRecyclerView() {
-
-        binding.productListRecycler.apply {
-            adapter = productAdapter
-        }
-    }*/
-    /*private fun observeShows() {
-
-        viewModel.getLiveDataObserver().observe(viewLifecycleOwner, object:Observer<Product> {
+        viewModel.getLiveDataObserver().observe(viewLifecycleOwner, object: Observer<Product>{
             override fun onChanged(t: Product?) {
-                if (t != null) {
-                    productAdapter.setList(t)
+                if (t != null){
+                    productAdapter.setList(t.result)
+                    productAdapter.notifyDataSetChanged()
                 }
-
             }
 
-        })
+        })/*{
+            productAdapter.setList(it.result)
+        }*/
         viewModel.loadData()
-
-    }*/
-
-    private fun setUpRecyclerView() {
-
-        binding.productListRecycler.apply {
-            adapter = productAdapter
-        }
-
-    }
-
-    private fun getProducts() {
-
-        viewModel.getProducts()
-
-    }
-    private fun observeProducts() {
-
-        viewModel.observeProducts().observe(viewLifecycleOwner) {
-            productAdapter.setProducts(it)
-            //enableViews()
-        }
-
     }
 
     override fun onDestroyView() {

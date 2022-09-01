@@ -28,15 +28,4 @@ object AppModule {
             .build()
     }
 
-
-    /*@Provides
-    @Singleton
-    fun provideRetrofitInstance(): CommerceApi=
-        Retrofit.Builder()
-            .baseUrl(Constants.BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-            .create(CommerceApi::class.java)
-*/
-
 }

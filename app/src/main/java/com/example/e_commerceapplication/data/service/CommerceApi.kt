@@ -38,8 +38,8 @@ interface CommerceApi {
     ): Call<List<Product>>
 
     @GET("urunler")
-   suspend fun getProduct(): Response<Products>
+   fun getProduct(): Call<Product>
 
     @GET("urun/{url}")
-    fun getByIdProduct(@Path ("id") id: Int): Call<ProductDetail>
+    fun getByIdProduct(@Path ("id") id: Int): Call<Product>
 }
