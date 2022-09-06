@@ -1,24 +1,24 @@
 package com.example.e_commerceapplication.presentation.view.home
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.e_commerceapplication.R
 import com.example.e_commerceapplication.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
+
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private lateinit var productAdapter: ProductRecyclerAdapter
-   private val viewModel: HomeViewModel by viewModels()
+
+    private val viewModel: HomeViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,55 +26,40 @@ class HomeFragment : Fragment() {
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
-
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        binding.toolbarMenu.setOnClickListener {
-            findNavController().navigate(R.id.action_home_to_menu)
-        }
-        binding.toolbarShoppingBasket.setOnClickListener {
-            findNavController().navigate(R.id.action_home_to_item)
-        }
-        binding.toolbarFilter.setOnClickListener {
-            findNavController().navigate(R.id.action_home_to_filter)
-        }
-        /*binding.recyclerView.apply {
-                   layoutManager = GridLayoutManager(context, 2, LinearLayoutManager.VERTICAL, false)
-               }*/
-
-
+        bindUI()
         initObservers()
     }
-    private fun initObservers(){
-        productAdapter = ProductRecyclerAdapter()
-        val layoutManager = LinearLayoutManager(context)
-        binding.productListRecycler.layoutManager = layoutManager
-        binding.productListRecycler.adapter = productAdapter
 
-       /* viewModel.getLiveDataObserver().observe(viewLifecycleOwner, object: Observer<Product>{
-            override fun onChanged(t: Product?) {
-                if (t != null){
-                    productAdapter.setList(t.result)
-                    productAdapter.notifyDataSetChanged()
-                }
+    private fun bindUI() {
+        binding.run {
+            toolbarMenu.setOnClickListener {
+                findNavController().navigate(R.id.action_home_to_menu)
+            }
+            toolbarShoppingBasket.setOnClickListener {
+                findNavController().navigate(R.id.action_home_to_item)
+            }
+            toolbarFilter.setOnClickListener {
+                findNavController().navigate(R.id.action_home_to_filter)
             }
 
-        })
-        viewModel.loadData()*/
+            productAdapter = ProductRecyclerAdapter().also {
+                productListRecycler.adapter = it
+            }
+        }
+    }
 
+    private fun initObservers() {
         viewModel.getLiveDataObserver().observe(viewLifecycleOwner) {
-
-            if (it != null) {
+            it?.let {
                 productAdapter.setList(it)
                 productAdapter.notifyDataSetChanged()
             }
         }
         viewModel.loadData()
-
     }
 
     override fun onDestroyView() {

@@ -19,21 +19,21 @@
             android:layout_height="50dp"
             android:layout_marginEnd="0dp"
 
-            app:navigationIcon="@drawable/menu">
-        </androidx.appcompat.widget.Toolbar>
+            app:navigationIcon="@drawable/menu"></androidx.appcompat.widget.Toolbar>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:orientation="horizontal"
+            android:layout_height="wrap_content"
             android:gravity="end"
-            android:layout_height="wrap_content">
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_shopping_basket"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            app:navigationIcon="@drawable/shopping_basket">
+            android:orientation="horizontal">
 
-        </androidx.appcompat.widget.Toolbar>
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar_shopping_basket"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:navigationIcon="@drawable/shopping_basket">
+
+            </androidx.appcompat.widget.Toolbar>
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar_filter"
@@ -50,28 +50,19 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Featured"
         android:layout_margin="20dp"
-        android:textColor="@color/black"
         android:fontFamily="@font/segoeui"
-        android:textSize="30sp"/>
+        android:text="Featured"
+        android:textColor="@color/black"
+        android:textSize="30sp" />
 
 
-    <GridLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/productListRecycler"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:layout_height="match_parent"
-            tools:listitem="@layout/card_cell"
-            android:id="@+id/productListRecycler"/>
-        </ScrollView>
-    </GridLayout>
+        android:layout_height="match_parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/card_cell" />
 
 
 </LinearLayout>

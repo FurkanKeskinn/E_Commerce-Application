@@ -7,17 +7,17 @@ import com.example.e_commerceapplication.data.model.ResultItem
 import com.example.e_commerceapplication.databinding.CardCellBinding
 import com.squareup.picasso.Picasso
 
-class ProductRecyclerAdapter: RecyclerView.Adapter<ProductRecyclerAdapter.ProductViewHolder>() {
+class ProductRecyclerAdapter : RecyclerView.Adapter<ProductRecyclerAdapter.ProductViewHolder>() {
 
     var liveData: List<ResultItem?>? = null
 
-    fun setList(data: List<ResultItem?>?){
+    fun setList(data: List<ResultItem?>?) {
         this.liveData = data
     }
 
-    class ProductViewHolder(val binding: CardCellBinding):RecyclerView.ViewHolder(binding.root) {
+    class ProductViewHolder(val binding: CardCellBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bindItems(result: ResultItem){
+        fun bindItems(result: ResultItem) {
             binding.productName.text = result.name
             binding.productPrice.text = result.price.toString()
             result.image.let {
@@ -38,8 +38,7 @@ class ProductRecyclerAdapter: RecyclerView.Adapter<ProductRecyclerAdapter.Produc
     }
 
     override fun getItemCount(): Int {
-
-            return liveData!!.size
+        return liveData?.size ?: 0
     }
 
 

@@ -18,5 +18,4 @@ class HomeViewModel @Inject constructor(private val repository: ProductRepositor
     fun loadData(){
         repository.getProduct(liveData)
     }
-
 }
