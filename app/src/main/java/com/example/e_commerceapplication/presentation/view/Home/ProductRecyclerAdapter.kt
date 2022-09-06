@@ -9,7 +9,7 @@ import com.squareup.picasso.Picasso
 
 class ProductRecyclerAdapter: RecyclerView.Adapter<ProductRecyclerAdapter.ProductViewHolder>() {
 
-    var liveData: List<ResultItem?>? = ArrayList()
+    var liveData: List<ResultItem?>? = null
 
     fun setList(data: List<ResultItem?>?){
         this.liveData = data

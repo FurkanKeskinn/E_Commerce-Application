@@ -21,13 +21,14 @@ class HomePage : Fragment() {
     private var _binding: FragmentHomePageBinding? = null
     private val binding get() = _binding!!
     private lateinit var productAdapter: ProductRecyclerAdapter
-   private val viewModel: HomeViewModel by viewModels()
+   //private val viewModel: HomeViewModel by viewModels()
+   private val viewModel: HomeViewModel = ViewModelProvider(this)[HomeViewModel::class.java]
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentHomePageBinding.inflate(inflater, container, false)
+        _binding = FragmentHomePageBinding.inflate(layoutInflater, container, false)
         return binding.root
 
     }
@@ -54,13 +55,13 @@ class HomePage : Fragment() {
 
         initObservers()
     }
-    fun initObservers(){
+    private fun initObservers(){
         productAdapter = ProductRecyclerAdapter()
         val layoutManager = LinearLayoutManager(context)
         binding.productListRecycler.layoutManager = layoutManager
         binding.productListRecycler.adapter = productAdapter
 
-        viewModel.getLiveDataObserver().observe(viewLifecycleOwner, object: Observer<Product>{
+       /* viewModel.getLiveDataObserver().observe(viewLifecycleOwner, object: Observer<Product>{
             override fun onChanged(t: Product?) {
                 if (t != null){
                     productAdapter.setList(t.result)
@@ -68,10 +69,18 @@ class HomePage : Fragment() {
                 }
             }
 
-        })/*{
-            productAdapter.setList(it.result)
-        }*/
+        })
+        viewModel.loadData()*/
+
+        viewModel.getLiveDataObserver().observe(viewLifecycleOwner) {
+
+            if (it != null) {
+                productAdapter.setList(it)
+                productAdapter.notifyDataSetChanged()
+            }
+        }
         viewModel.loadData()
+
     }
 
     override fun onDestroyView() {

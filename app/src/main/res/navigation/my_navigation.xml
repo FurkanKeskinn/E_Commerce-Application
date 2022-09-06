@@ -9,7 +9,7 @@
         android:id="@+id/homePage"
         android:name="com.example.e_commerceapplication.presentation.view.Home.HomePage"
         android:label="fragment_home_page"
-        tools:layout="@layout/fragment_home_page" >
+        tools:layout="@layout/fragment_home_page">
         <action
             android:id="@+id/action_homePage_to_filterPage"
             app:destination="@id/filterPage" />

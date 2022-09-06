@@ -1,15 +1,12 @@
 package com.example.e_commerceapplication.presentation.view.Login
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.example.e_commerceapplication.MainActivity
 import com.example.e_commerceapplication.R
-import com.example.e_commerceapplication.databinding.FragmentFilterPageBinding
 import com.example.e_commerceapplication.databinding.FragmentLoginPageBinding
 
 class LoginPage : Fragment() {

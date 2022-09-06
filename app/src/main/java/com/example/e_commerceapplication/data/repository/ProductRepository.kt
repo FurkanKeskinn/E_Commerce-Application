@@ -1,6 +1,5 @@
 package com.example.e_commerceapplication.data.repository
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.e_commerceapplication.data.model.Product
 import com.example.e_commerceapplication.data.model.ResultItem
@@ -12,13 +11,13 @@ import javax.inject.Inject
 
 class ProductRepository @Inject constructor(private val api: CommerceApi) {
 
-    fun getProduct(liveData: MutableLiveData<Product>) {
+    fun getProduct(liveData: MutableLiveData<List<ResultItem?>?>) {
 
         val call: Call<Product> = api.getProduct()
         call.enqueue(object: Callback<Product>{
             override fun onResponse(call: Call<Product>, response: Response<Product>) {
                 if (response.isSuccessful){
-                    liveData.postValue(response.body())
+                    liveData.postValue(response.body()?.result)
                 }else{
                     liveData.postValue(null)
                 }
@@ -26,9 +25,6 @@ class ProductRepository @Inject constructor(private val api: CommerceApi) {
             override fun onFailure(call: Call<Product>, t: Throwable) {
                 liveData.postValue(null)
             }
-
-
-
         })
     }
 

@@ -1,11 +1,11 @@
-package com.example.e_commerceapplication
+package com.example.e_commerceapplication.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import com.example.e_commerceapplication.R
 import com.example.e_commerceapplication.databinding.ActivityMainBinding
-import com.example.e_commerceapplication.databinding.FragmentHomePageBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -18,9 +18,8 @@ class MainActivity : AppCompatActivity() {
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val navHostFragment = supportFragmentManager
-            .findFragmentById(R.id.fragmentContainerView) as NavHostFragment
-        navController = navHostFragment.navController
+       /* val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+        navController = navHostFragment.navController*/
 
     }
 }
