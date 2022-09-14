@@ -40,6 +40,6 @@ interface CommerceApi {
     @GET("urunler")
    fun getProduct(): Call<Product>
 
-    @GET("urun/{url}")
+    @GET("urun/{id}")
     fun getByIdProduct(@Path ("id") id: Int): Call<Product>
 }

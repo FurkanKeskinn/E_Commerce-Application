@@ -11,6 +11,9 @@ class HomeViewModel @Inject constructor(private val repository: ProductRepositor
 
     var liveData: MutableLiveData<List<ResultItem?>?> = MutableLiveData()
 
+    init {
+        loadData()
+    }
     fun getLiveDataObserver(): MutableLiveData<List<ResultItem?>?>{
         return liveData
     }

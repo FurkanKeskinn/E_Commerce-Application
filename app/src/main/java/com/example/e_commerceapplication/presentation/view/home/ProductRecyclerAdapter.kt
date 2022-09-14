@@ -2,7 +2,10 @@ package com.example.e_commerceapplication.presentation.view.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.example.e_commerceapplication.R
 import com.example.e_commerceapplication.data.model.ResultItem
 import com.example.e_commerceapplication.databinding.CardCellBinding
 import com.squareup.picasso.Picasso
@@ -18,8 +21,18 @@ class ProductRecyclerAdapter : RecyclerView.Adapter<ProductRecyclerAdapter.Produ
     class ProductViewHolder(val binding: CardCellBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bindItems(result: ResultItem) {
-            binding.productName.text = result.name
-            binding.productPrice.text = result.price.toString()
+            binding.run {
+                productName.text = result.name
+                productPrice.text = result.price.toString()
+               /* productCard.setOnClickListener {
+                    it.findNavController().navigate(R.id.action_home_to_item)
+                }*/
+                productCard.setOnClickListener {
+                    val transition =
+                        HomeFragmentDirections.actionHomeToItem(result.id!!)
+                            Navigation.findNavController(it).navigate(transition)
+                }
+            }
             result.image.let {
                 Picasso.get().load(it).into(binding.productImageView)
             }

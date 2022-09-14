@@ -112,6 +112,10 @@
         android:name="com.example.e_commerceapplication.presentation.view.detail.ItemFragment"
         android:label="fragment_item"
         tools:layout="@layout/fragment_item" >
+        <argument
+            android:name="itemId"
+            app:argType="integer" />
+
         <action
             android:id="@+id/action_item_to_cart"
             app:destination="@id/cart" />

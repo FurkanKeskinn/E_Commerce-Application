@@ -1,5 +1,6 @@
 package com.example.e_commerceapplication.data.repository
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.e_commerceapplication.data.model.Product
 import com.example.e_commerceapplication.data.model.ResultItem
@@ -68,29 +69,29 @@ class ProductRepository @Inject constructor(private val api: CommerceApi) {
         })
     }*/
 
-   /* fun getByIdProduct(id: Int) {
-        val call: Call<ProductDetail> = api.getByIdProduct(id = id)
-        call.enqueue(object : Callback<ProductDetail> {
+    fun getByIdProduct(id: Int) {
+        val productDetailLiveData = MutableLiveData<List<ResultItem?>?>()
+        val call: Call<Product> = api.getByIdProduct(id)
+        call.enqueue(object : Callback<Product> {
 
-            override fun onResponse(call: Call<ProductDetail>, response: Response<ProductDetail>) {
+            override fun onResponse(call: Call<Product>, response: Response<Product>) {
                 if (response.isSuccessful) {
-                    productDetailLiveData.postValue(response.body())
+                    productDetailLiveData.postValue(response.body()?.result)
                     Log.e("response", "ürün geldi")
-                    isLoading.value = false
 
                 } else {
                     Log.e("response", "ürün gelmedi 1")
-                    isLoading.value = false
+                    productDetailLiveData.postValue(null)
                 }
             }
 
-            override fun onFailure(call: Call<ProductDetail>, t: Throwable) {
+            override fun onFailure(call: Call<Product>, t: Throwable) {
                 t.localizedMessage?.toString()?.let { Log.e("Product Failure gelmedi", it) }
-                isLoading.value = false
+                productDetailLiveData.postValue(null)
+
             }
 
-
         })
-    }*/
+    }
 
 }
