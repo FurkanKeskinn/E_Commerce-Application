@@ -12,6 +12,8 @@ import javax.inject.Inject
 
 class ProductRepository @Inject constructor(private val api: CommerceApi) {
 
+    var productDetailLiveData : MutableLiveData<ResultItem?>? = null
+
     fun getProduct(liveData: MutableLiveData<List<ResultItem?>?>) {
 
         val call: Call<Product> = api.getProduct()
@@ -69,29 +71,30 @@ class ProductRepository @Inject constructor(private val api: CommerceApi) {
         })
     }*/
 
-    fun getByIdProduct(id: Int) {
-        val productDetailLiveData = MutableLiveData<List<ResultItem?>?>()
+    fun getByIdProduct(id: Int) : MutableLiveData<ResultItem?>?{
         val call: Call<Product> = api.getByIdProduct(id)
         call.enqueue(object : Callback<Product> {
 
             override fun onResponse(call: Call<Product>, response: Response<Product>) {
                 if (response.isSuccessful) {
-                    productDetailLiveData.postValue(response.body()?.result)
+                    productDetailLiveData?.postValue(response.body()?.result?.get(id))
                     Log.e("response", "ürün geldi")
 
                 } else {
                     Log.e("response", "ürün gelmedi 1")
-                    productDetailLiveData.postValue(null)
+                    productDetailLiveData?.postValue(null)
                 }
             }
 
             override fun onFailure(call: Call<Product>, t: Throwable) {
                 t.localizedMessage?.toString()?.let { Log.e("Product Failure gelmedi", it) }
-                productDetailLiveData.postValue(null)
+                productDetailLiveData?.postValue(null)
 
             }
 
         })
+        return productDetailLiveData
     }
+
 
 }

@@ -6,10 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.liveData
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.e_commerceapplication.R
+import com.example.e_commerceapplication.data.model.ResultItem
 import com.example.e_commerceapplication.databinding.FragmentItemBinding
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
@@ -50,21 +52,20 @@ class ItemFragment : Fragment() {
 
     private fun bindItem() {
 
-        viewModel.getLiveDataObserver().observe(viewLifecycleOwner) {
+        viewModel.getLiveDataObserver()?.observe(viewLifecycleOwner) {
             it.let { result ->
                 binding.run {
-                    result.image.let {
-                        Picasso.get().load(result.image).into(itemImage)
+                    result?.image.let {
+                        Picasso.get().load(result?.image).into(itemImage)
                     }
-                    itemName.text = result.name
-                    itemPrice.text = result.price.toString()
-                    itemDescription.text = result.description
+                    itemName.text = result?.name
+                    itemPrice.text = result?.price.toString()
+                    itemDescription.text = result?.description
 
                     buyNowBtn.setOnClickListener { view ->
                         view.findNavController().navigate(R.id.action_item_to_cart)
                     }
                 }
-
             }
         }
         viewModel.getData(args.itemId)
